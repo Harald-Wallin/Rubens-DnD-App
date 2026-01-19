@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Rubens_DnD__project.NewProfilePage"
+             Title="NewProfilePage"
+             NavigationPage.HasNavigationBar="False"
+             Shell.NavBarIsVisible="False">
+
+
+    <Grid>
+        <Image
+        Source="kp_new_profile_page_background.png"
+        Aspect="AspectFill"/>
+        
+    <Grid
+    RowDefinitions="Auto,*"
+    ColumnDefinitions="*,Auto"
+    Margin="7">
+    
+        <VerticalStackLayout 
+        Grid.Row="0"
+        Grid.ColumnSpan="2"
+        Spacing="4">
+
+            <Label 
+            Text="NY PROFIL"
+            HorizontalOptions="Center"
+            FontFamily="AvQest"
+            TextColor="#0E100B"
+            FontSize="35"
+            Margin="0,0,0,20"/>
+
+            <Grid
+             ColumnDefinitions="Auto,*">
+                <Label
+                Grid.Column="0"
+                Text="Namn:"
+                VerticalOptions="Center"
+                FontSize="24"
+                WidthRequest="70"
+                Style="{StaticResource AttributeTextStyle}"/>
+
+                <Border 
+                 Grid.Column="1"
+                 Stroke="#6B4F2D"
+                 StrokeThickness="1">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="5"/>
+                        </Border.StrokeShape>
+                        <Entry 
+                    x:Name="NameEntry" 
+                    Placeholder="Nytra Finnsson" 
+                    Style="{StaticResource NameRaceClassEntry}"/>
+                </Border>
+            </Grid>
+
+            <Grid
+             ColumnDefinitions="Auto,*">
+                <Label
+                Grid.Column="0"
+                Text="Ras:"
+                VerticalOptions="Center"
+                FontSize="24"
+                WidthRequest="70"
+                Style="{StaticResource AttributeTextStyle}"/>
+
+                <Border 
+                 Grid.Column="1"
+                 Stroke="#6B4F2D"
+                 StrokeThickness="1">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="5"/>
+                        </Border.StrokeShape>
+                        <Entry 
+                    x:Name="RaceEntry" 
+                    Placeholder="Gnome"
+                    Style="{StaticResource NameRaceClassEntry}"/>
+                </Border>
+            </Grid>
+
+            <Grid
+             ColumnDefinitions="Auto,*">
+                <Label
+                Grid.Column="0"
+                Text="Klass:"
+                VerticalOptions="Center"
+                FontSize="24"
+                WidthRequest="70"
+                Style="{StaticResource AttributeTextStyle}"/>
+                
+                <Border
+                 Grid.Column="1"
+                 Stroke="#6B4F2D"
+                 StrokeThickness="1">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="5"/>
+                        </Border.StrokeShape>
+                        <Entry 
+                    x:Name="ClassEntry" 
+                    Placeholder="Fladdermus-jägare" 
+                    Style="{StaticResource NameRaceClassEntry}"/>
+                </Border>
+            </Grid>
+
+        </VerticalStackLayout>
+
+
+        <!--Attributer - + -->
+            <VerticalStackLayout 
+         Grid.Row="1"
+         Grid.Column="0"
+         Spacing="15"
+         Margin="0,30,0,0">
+
+                <!--Extra attributpoän (4/4)-->
+            <HorizontalStackLayout 
+             Spacing="5" 
+             VerticalOptions="Center"
+             HorizontalOptions="End"
+             Padding="0,0,0,0">
+
+                <Label 
+                x:Name="PointsLabel" 
+                Text="4/4" 
+                Margin="0,0,40,0"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Start"
+                    FontSize="30"
+                TextColor="#0E100B"
+                Style="{StaticResource AttributeValueStyle}"/>
+
+            </HorizontalStackLayout>
+
+                <!--Styrka-->
+                    <HorizontalStackLayout 
+                 Spacing="5" 
+                 VerticalOptions="Center">
+
+                        <Label
+                      Text="Styrka"
+                      FontSize="30"
+                      WidthRequest="140"
+                      VerticalOptions="Center"
+                      Style="{StaticResource AttributeTextStyle}"/>
+
+                        <Label 
+                      x:Name="StrengthLabel" 
+                      Text="0" 
+                      WidthRequest="15" 
+                      HorizontalTextAlignment="Center"
+                      VerticalOptions="Center"
+                      Style="{StaticResource AttributeValueStyle}"/>
+
+                        <Button 
+                     Text="-" 
+                     Clicked="DecreaseAttribute" 
+                     CommandParameter="Strength"
+                     Style="{StaticResource ProfileButtonStyle}"/>
+
+                        <Button 
+                     Text="+" 
+                     Clicked="IncreaseAttribute" 
+                     CommandParameter="Strength"
+                     Style="{StaticResource ProfileButtonStyle}"/>
+                    </HorizontalStackLayout>
+
+                    <!--Smidighet-->
+                    <HorizontalStackLayout 
+                 Spacing="5" 
+                 VerticalOptions="Center">
+
+                    <Label
+                     Text="Smidighet" 
+                        FontSize="30"
+                        WidthRequest="140"
+                     VerticalOptions="Center"
+                     Style="{StaticResource AttributeTextStyle}"/>
+
+                    <Label 
+                     x:Name="DexterityLabel" 
+                     Text="0" WidthRequest="15" 
+                     HorizontalTextAlignment="Center"
+                     VerticalOptions="Center"
+                     Style="{StaticResource AttributeValueStyle}"/>
+
+                        <Button
+                     Text="-"
+                     Clicked="DecreaseAttribute" 
+                     CommandParameter="Dexterity"
+                     Style="{StaticResource ProfileButtonStyle}"/>
+
+                        <Button
+                     Text="+" 
+                     Clicked="IncreaseAttribute" 
+                     CommandParameter="Dexterity"
+                     Style="{StaticResource ProfileButtonStyle}"/>
+                    </HorizontalStackLayout>
+
+                    <!--Intellekt-->
+                    <HorizontalStackLayout 
+                 Spacing="5" 
+                 VerticalOptions="Center">
+
+                        <Label 
+                     Text="Intellekt"
+                     FontSize="30"
+                            WidthRequest="140"
+                     VerticalOptions="Center"
+                     Style="{StaticResource AttributeTextStyle}"/>
+
+                        <Label 
+                     x:Name="IntellectLabel" 
+                     Text="0" WidthRequest="15" 
+                     HorizontalTextAlignment="Center"
+                     VerticalOptions="Center"
+                     Style="{StaticResource AttributeValueStyle}"/>
+
+                        <Button 
+                     Text="-"
+                     Clicked="DecreaseAttribute" 
+                     CommandParameter="Intellect"
+                     Style="{StaticResource ProfileButtonStyle}"/>
+
+                        <Button 
+                     Text="+" 
+                     Clicked="IncreaseAttribute" 
+                     CommandParameter="Intellect"
+                     Style="{StaticResource ProfileButtonStyle}"/>
+                    </HorizontalStackLayout>
+
+                    <!--Karisma-->
+                    <HorizontalStackLayout
+                 Spacing="5" 
+                 VerticalOptions="Center">
+
+                        <Label 
+                     Text="Karisma"
+                     FontSize="30"
+                            WidthRequest="140"
+                     VerticalOptions="Center"
+                     Style="{StaticResource AttributeTextStyle}"/>
+
+                        <Label 
+                     x:Name="CharismaLabel" 
+                     Text="0" WidthRequest="15" 
+                     HorizontalTextAlignment="Center"
+                     VerticalOptions="Center"
+                     Style="{StaticResource AttributeValueStyle}"/>
+
+                        <Button 
+                     Text="-" 
+                     Clicked="DecreaseAttribute" 
+                     CommandParameter="Charisma"
+                     Style="{StaticResource ProfileButtonStyle}"/>
+
+                        <Button 
+                     Text="+" 
+                     Clicked="IncreaseAttribute" 
+                     CommandParameter="Charisma"
+                     Style="{StaticResource ProfileButtonStyle}"/>
+                    </HorizontalStackLayout>
+
+                    <!--Själslighet-->
+                    <HorizontalStackLayout 
+                 Spacing="5" 
+                 VerticalOptions="Center">
+
+                        <Label 
+                     Text="Själslighet"
+                            WidthRequest="140"
+                     FontSize="28"
+                     VerticalOptions="Center"
+                     Style="{StaticResource AttributeTextStyle}"/>
+
+                        <Label 
+                     x:Name="SpiritLabel" 
+                     Text="0" 
+                     WidthRequest="15" 
+                     HorizontalTextAlignment="Center"
+                     VerticalOptions="Center"
+                     Style="{StaticResource AttributeValueStyle}"/>
+
+                        <Button 
+                     Text="-" 
+                     Clicked="DecreaseAttribute" 
+                     CommandParameter="Spirit"
+                     Style="{StaticResource ProfileButtonStyle}"/>
+
+                        <Button 
+                     Text="+"  
+                     Clicked="IncreaseAttribute" 
+                     CommandParameter="Spirit"
+                     Style="{StaticResource ProfileButtonStyle}"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout>
+
+                        <Button 
+                     Text="Backa"
+                     FontSize="18"
+                     HeightRequest="30"
+                     Clicked="BackClicked"
+                     TextColor="#FFB600"
+                     BackgroundColor="#BA1400"
+                     BorderColor="#FF9000"
+                     BorderWidth="1"
+                     CornerRadius="10"
+                     FontFamily="AvQest"
+                     Margin="20,100,0,0"/>
+
+                        <Button
+                     Text="SPELA"
+                     FontSize="20"
+                     HeightRequest="60"
+                     WidthRequest="160"
+                     Clicked="PlayClicked"
+                     HorizontalOptions="Fill"
+                     VerticalOptions="End"
+                     TextColor="#FFB600"
+                     BackgroundColor="#BA1400"
+                     BorderColor="#FF9000"
+                     BorderWidth="1"
+                     CornerRadius="10"
+                     FontFamily="AvQest"
+                     FontAttributes="Bold"
+                     Margin="57,100,0,0"/>
+
+                    </HorizontalStackLayout>
+                
+            </VerticalStackLayout>
+            <VerticalStackLayout 
+             Grid.Row="1"
+             Grid.Column="1"
+             VerticalOptions="Center"
+             Spacing="1">
+
+                <Label 
+                 x:Name="GenerateCounterLabel" 
+                 Text="3/3" 
+                 HorizontalOptions="End"
+                 TextColor="#0E100B"
+                 FontFamily="AvQest"
+                 FontSize="30"
+                 WidthRequest="100"
+                 Padding="24,0,0,0"/>
+
+                <Button
+                 x:Name="GenerateBtn" 
+                 Text="G&#10;E&#10;N&#10;E&#10;R&#10;E&#10;R&#10;A"
+                 Clicked="GenerateAttributes"
+                 WidthRequest="60"
+                 HeightRequest="170"
+                 Margin="5,0,5,10"
+                 FontSize="18"
+                 FontFamily="AvQest"
+                 Style="{StaticResource MenuButtonStyle}"/>
+            </VerticalStackLayout>
+        </Grid>
+    </Grid>
+
+</ContentPage>

@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Rubens_DnD__project.CharacterPage"
+             Title="Character"
+             NavigationPage.HasNavigationBar="False"
+             Shell.NavBarIsVisible="False">
+    <Grid>
+        <Image Source="kp_character_page_background.png" Aspect="AspectFill" />
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+
+            <!-- HEADER -->
+            <Grid Grid.Row="0"
+                Grid.ColumnSpan="2"
+                RowDefinitions="Auto,Auto, Auto"
+                ColumnDefinitions="*,Auto,*"
+                RowSpacing="5">
+
+
+
+                <ImageButton Source="scroll.png" HeightRequest="60"
+                                 Grid.Row="0"
+                                 Grid.Column="0"
+                                 Margin="0,60,0,0"/>
+
+                <VerticalStackLayout HorizontalOptions="Center"
+                                     Grid.Row="0"
+                                     Grid.Column="1">
+
+                    <Label x:Name="NameLabel" FontSize="30"
+                               HorizontalTextAlignment="Center"
+                               FontFamily="AvQest"
+                               Margin="0,20,0,0"/>
+                    <Label x:Name="RaceLabel" FontSize="20"
+                               HorizontalTextAlignment="Center"
+                               FontFamily="AvQest"/>
+                    <Label x:Name="ClassLabel" FontSize="25"
+                               HorizontalTextAlignment="Center"
+                               FontFamily="AvQest"/>
+
+                </VerticalStackLayout>
+
+                <ImageButton Source="die.png" HeightRequest="60"
+                                 Grid.Row="0"
+                                 Grid.Column="2"
+                                 Margin="0,60,0,0"/>
+
+
+                <!-- Steg 2 – Level / DING -->
+                <HorizontalStackLayout Grid.Row="1" Grid.ColumnSpan="3"
+                                       Spacing="4"  HorizontalOptions="Center"
+                                       Margin="0,0,0,30">
+
+                    <Button x:Name="DecreaseLevelBtn" Text="-"  Clicked="DecreaseLevelClicked" Style="{StaticResource CharacterPage+-}"/>
+                    <Label x:Name="LevelLabelText" Text="Lv." FontSize="18" FontFamily="AvQest" VerticalOptions="Center"/>
+                    <Label x:Name="LevelLabel" Text="1" FontSize="25" FontFamily="AvQest" VerticalOptions="Center"/>
+                    <ImageButton x:Name="LevelUpBtn" Source="lvl_up.png" WidthRequest="30" HeightRequest="50" Clicked="LevelUpClicked" Background="Transparent"/>
+
+                </HorizontalStackLayout>
+
+                <!-- Steg 3 – Primära stats -->
+                <HorizontalStackLayout Grid.Row="2" Grid.ColumnSpan="3"
+                                       HorizontalOptions="Center"
+                                       Spacing="20">
+                    <!-- Armor -->
+                    <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="5">
+                        <!-- Knapp för att minska Armor -->
+                        <VerticalStackLayout Spacing="5" VerticalOptions="Center" >
+                            <Button Text="+" Clicked="IncreaseArmorClicked" Style="{StaticResource CharacterPage+-}"/>
+                            <Button Text="-" WidthRequest="30" Clicked="DecreaseArmorClicked" Style="{StaticResource CharacterPage+-}"/>
+                        </VerticalStackLayout>
+                        <!-- Armor-värde -->
+                        <Label x:Name="ArmorLabel" Text="0" FontSize="24" FontFamily="AvQest" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="50" HorizontalTextAlignment="Center"/>
+                    </HorizontalStackLayout>
+
+                    <!-- HP -->
+                    <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="7">
+                        <!-- Current HP knappar -->
+                        <VerticalStackLayout Spacing="5" VerticalOptions="Center" Padding="0,0,0,0">
+                            <Button Text="+"  Clicked="IncreaseCurrentHPClicked" Style="{StaticResource CharacterPage+-}"/>
+                            <Button Text="-"  Clicked="DecreaseCurrentHPClicked" Style="{StaticResource CharacterPage+-}"/>
+                        </VerticalStackLayout>
+
+                        <!-- HP Label -->
+                        <Label x:Name="HPLabel" HorizontalOptions="Center" VerticalOptions="Center"
+                               FontSize="20"
+                               WidthRequest="90" HorizontalTextAlignment="Center" Style="{StaticResource HPSpanStyle}"/>
+
+                        <!-- Max HP knappar -->
+                        <VerticalStackLayout Spacing="5" VerticalOptions="Center">
+                            <Button Text="+ Max"  Clicked="IncreaseMaxHPClicked" Style="{StaticResource CharacterPage+-}"/>
+                            <Button Text="- Max"  Clicked="DecreaseMaxHPClicked" Style="{StaticResource CharacterPage+-}"/>
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
+
+                    <!-- Wizard Level -->
+                    <HorizontalStackLayout HorizontalOptions="Fill" VerticalOptions="Center" Spacing="5" >
+
+                        <!-- Wizard Level Label -->
+                        <Label x:Name="WizardLabel" Text="0" FontSize="24" FontFamily="AvQest" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="50" HorizontalTextAlignment="Center"/>
+
+                        <!-- Knapp för att ändra Wizard Level -->
+                        <VerticalStackLayout Spacing="5" VerticalOptions="Center">
+                            <Button Text="+"  Clicked="IncreaseWizardClicked" Style="{StaticResource CharacterPage+-}"/>
+                            <Button Text="-"  Clicked="DecreaseWizardClicked" Style="{StaticResource CharacterPage+-}"/>
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
+                </HorizontalStackLayout>
+            </Grid>
+
+
+
+            <!-- Steg 4 – Attribut / Extra Stats -->
+            <VerticalStackLayout Grid.Row="1"  Grid.Column="0" Spacing="12" Padding="0,60,0,0" Margin="4,0,0,0">
+                <!-- Styrka -->
+                <HorizontalStackLayout Spacing="5" VerticalOptions="Center">
+                    <Label Text="Styrka" Style="{StaticResource CharacterAttributeLabel}"/>
+                    <Label x:Name="StrengthLabel" Text="0"  Style="{StaticResource CharacterAttributeValueLabel}"/>
+                    <Button Text="-"  Clicked="DecreaseStrengthClicked" Style="{StaticResource CharacterPage+-}"/>
+                    <Button Text="+"  Clicked="IncreaseStrengthClicked" Style="{StaticResource CharacterPage+-}"/>
+                </HorizontalStackLayout>
+
+                <!-- Smidighet -->
+                <HorizontalStackLayout Spacing="5" VerticalOptions="Center">
+                    <Label Text="Smidighet" Style="{StaticResource CharacterAttributeLabel}"/>
+                    <Label x:Name="DexterityLabel" Text="0" Style="{StaticResource CharacterAttributeValueLabel}"/>
+                    <Button Text="-"  Clicked="DecreaseDexterityClicked" Style="{StaticResource CharacterPage+-}"/>
+                    <Button Text="+"  Clicked="IncreaseDexterityClicked" Style="{StaticResource CharacterPage+-}"/>
+                </HorizontalStackLayout>
+
+                <!-- Intellekt -->
+                <HorizontalStackLayout Spacing="5" VerticalOptions="Center">
+                    <Label Text="Intellekt" Style="{StaticResource CharacterAttributeLabel}"/>
+                    <Label x:Name="IntellectLabel" Text="0" Style="{StaticResource CharacterAttributeValueLabel}"/>
+                    <Button Text="-"  Clicked="DecreaseIntellectClicked" Style="{StaticResource CharacterPage+-}"/>
+                    <Button Text="+"  Clicked="IncreaseIntellectClicked" Style="{StaticResource CharacterPage+-}"/>
+                </HorizontalStackLayout>
+
+                <!-- Karisma -->
+                <HorizontalStackLayout Spacing="5" VerticalOptions="Center">
+                    <Label Text="Karisma" Style="{StaticResource CharacterAttributeLabel}"/>
+                    <Label x:Name="CharismaLabel" Text="0" Style="{StaticResource CharacterAttributeValueLabel}"/>
+                    <Button Text="-"  Clicked="DecreaseCharismaClicked" Style="{StaticResource CharacterPage+-}"/>
+                    <Button Text="+"  Clicked="IncreaseCharismaClicked" Style="{StaticResource CharacterPage+-}"/>
+                </HorizontalStackLayout>
+
+                <!-- Själslighet -->
+                <HorizontalStackLayout Spacing="5" VerticalOptions="Center">
+                    <Label Text="Själslighet" Style="{StaticResource CharacterAttributeLabel}"/>
+                    <Label x:Name="SpiritLabel" Text="0" Style="{StaticResource CharacterAttributeValueLabel}"/>
+                    <Button Text="-"  Clicked="DecreaseSpiritClicked" Style="{StaticResource CharacterPage+-}"/>
+                    <Button Text="+"  Clicked="IncreaseSpiritClicked" Style="{StaticResource CharacterPage+-}"/>
+                </HorizontalStackLayout>
+                <!-- Steg 5 – Inspiration & Avsluta -->
+                <VerticalStackLayout Spacing="15" Padding="0,95,70,0" HorizontalOptions="Center">
+
+                    <!-- Inspiration pluppar -->
+                    <VerticalStackLayout>
+                        <Label Text="Inspiration" HorizontalTextAlignment="Center" FontFamily="AvQest" FontSize="30"/>
+                        <HorizontalStackLayout Spacing="12" HorizontalOptions="Center" Margin="0,10,0,0">
+                            
+                            <BoxView x:Name="Inspiration1" WidthRequest="50" HeightRequest="40" Color="Grey" CornerRadius="20">
+                                <BoxView.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="InspirationTapped" CommandParameter="0"/>
+                                </BoxView.GestureRecognizers>
+                            </BoxView>
+
+                            <BoxView x:Name="Inspiration2" WidthRequest="50" HeightRequest="40" Color="Grey" CornerRadius="20">
+                                <BoxView.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="InspirationTapped" CommandParameter="1"/>
+                                </BoxView.GestureRecognizers>
+                            </BoxView>
+
+                            <BoxView x:Name="Inspiration3" WidthRequest="50" HeightRequest="40" Color="Grey" CornerRadius="20">
+                                <BoxView.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="InspirationTapped" CommandParameter="2"/>
+                                </BoxView.GestureRecognizers>
+                            </BoxView>
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+
+
+
+
+            <VerticalStackLayout Grid.Row="1"
+                             Grid.Column="1"
+                             Spacing="30"
+                             HorizontalOptions="End"
+                             VerticalOptions="Center"
+                             Padding="0,70,0,0">
+
+                <ImageButton x:Name="InventoryBtn"
+                         Source="inventory_image.png"
+                         WidthRequest="80"
+                         HeightRequest="80"
+                         Clicked="InventoryBtn_Clicked"
+                         Background="Transparent"/>
+
+                <ImageButton x:Name="AbilitiesBtn"
+                         Source="abilities_image.png"
+                         WidthRequest="80"
+                         HeightRequest="80"
+                         Clicked="AbilitiesBtn_Clicked"
+                         Background="Transparent"/>
+
+                <ImageButton x:Name="NotesBtn"
+                         Source="notes_image.png"
+                         WidthRequest="80"
+                         HeightRequest="80"
+                         Clicked="NotesBtn_Clicked"
+                         Background="Transparent"/>
+
+                <!-- Avsluta-knapp -->
+                <Button Text="RETIRERA" Clicked="ExitClicked" BackgroundColor="#BA1400" TextColor="#0E100B" BorderColor="#0E100B"
+                        BorderWidth="1" CornerRadius="4" FontFamily="AvQest"
+                        FontSize="16" WidthRequest="120"
+                        Margin="0,20,20,60"
+                        VerticalOptions="End"/>
+
+            </VerticalStackLayout>
+        </Grid>
+
+        <!-- ================= POPUP OVERLAY ================= -->
+        <Grid x:Name="PopupOverlay"
+              IsVisible="False"
+              BackgroundColor="#80000000"
+              InputTransparent="False">
+
+            <Border x:Name="AddItemPopup"
+        IsVisible="False"
+        WidthRequest="300"
+        HorizontalOptions="Center"
+        VerticalOptions="Center"
+        StrokeShape="RoundRectangle 10"
+        Background="#222"
+        Padding="12">
+
+
+
+
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Nytt föremål"
+               Style="{StaticResource PopUpHeadline}"
+               HorizontalOptions="Center"/>
+
+                    <Entry x:Name="ItemNameEntry"
+                    Placeholder="Namn"/>
+
+                    <Editor x:Name="ItemDescriptionEditor"
+                Placeholder="Beskrivning"
+                HeightRequest="100"/>
+
+                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+
+
+            <Border x:Name="AddAbilityPopup"
+        IsVisible="False"
+        WidthRequest="300"
+        HorizontalOptions="Center"
+        VerticalOptions="Center"
+        Background="#222"
+        Padding="12">
+
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Ny färdighet"
+                           Style="{StaticResource PopUpHeadline}"
+                           HorizontalOptions="Center"/>
+
+                    <Entry x:Name="AbilityNameEntry"
+                      Placeholder="Namn"/>
+
+                    <Editor x:Name="AbilityDescriptionEditor"
+                Placeholder="Beskrivning"
+                HeightRequest="100"/>
+
+                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+
+
+            <!-- ========== INVENTORY POPUP ========== -->
+            <Border x:Name="InventoryPopup"
+                    IsVisible="False"
+                    Style="{StaticResource PopUpBorder}"
+                    StrokeShape="RoundRectangle 8"
+                    Stroke="Black">
+
+                <Grid RowDefinitions="*,Auto">
+                    <Image Source="inventory_page_background.png"
+                Aspect="AspectFill"
+                Opacity="0.50"/>
+
+                    <VerticalStackLayout Padding="16" Spacing="12"
+                                     Grid.Row="0">
+
+                        <Label Text="Ryggsäck"
+                               Style="{StaticResource PopUpHeadline}"
+                               HorizontalOptions="Center"/>
+
+                        <ScrollView>
+                            <CollectionView x:Name="InventoryListView"
+                                        SelectionMode="None"
+                                        BackgroundColor="#99221818"
+                                        HeightRequest="240">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Padding="6">
+                                            <Border StrokeShape="RoundRectangle 6"
+                                                    Stroke="White">
+                                                <Label Text="{Binding Name}"
+                                               Style="{StaticResource PopUpListText}">
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer
+                                                    Tapped="InventoryItemTapped"
+                                                    CommandParameter="{Binding .}"/>
+                                                </Label.GestureRecognizers>
+                                            </Label>
+                                            </Border>
+                                        </Grid>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </ScrollView>
+
+                        <HorizontalStackLayout Grid.Row="1">
+                            <Button Text="Backa"
+                            WidthRequest="60"
+                            
+                            Clicked="InventoryBackClicked"
+                            Margin="5,0,60,0"
+                            Style="{StaticResource PopUpButton}"/>
+
+                            <Button Text="Lägg till"
+                            Clicked="AddItemClicked"
+                            Style="{StaticResource PopUpButton}"/>
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                </Grid>
+            </Border>
+
+
+            <!-- ========== ABILITIES POPUP ========== -->
+            <Border x:Name="AbilitiesPopup"
+                    IsVisible="False"
+                    Style="{StaticResource PopUpBorder}"
+                    StrokeShape="RoundRectangle 8"
+                    Stroke="Black">
+
+                <Grid RowDefinitions="*,Auto">
+
+                    <VerticalStackLayout Padding="16" Spacing="12">
+
+                        <Label Text="Färdigheter"
+                           Grid.Row="0"
+                           Style="{StaticResource PopUpHeadline}"
+                           HorizontalOptions="Center"/>
+
+                        <ScrollView>
+                            <CollectionView x:Name="AbilitiesListView"
+                                        SelectionMode="None">
+
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Padding="6">
+                                            <Label Text="{Binding Name}"
+                                               Style="{StaticResource PopUpListText}">
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer
+                                                    Tapped="AbilityItemTapped"
+                                                    CommandParameter="{Binding .}" />
+                                                </Label.GestureRecognizers>
+                                            </Label>
+                                        </Grid>
+                                    </DataTemplate>
+
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </ScrollView>
+
+
+                    </VerticalStackLayout>
+
+                    <HorizontalStackLayout Grid.Row="1">
+                        <Button Text="Backa"
+                                Clicked="AbilitiesBackClicked"
+                                Margin="5,0,60,0"
+                                Style="{StaticResource PopUpButton}"/>
+
+                        <Button Text="Lägg till"
+                                Clicked="AddAbilityClicked"
+                                Style="{StaticResource PopUpButton}"/>
+                    </HorizontalStackLayout>
+                </Grid>
+            </Border>
+
+
+            <!-- ========== NOTES POPUP ========== -->
+            <Border x:Name="NotesPopup"
+                    IsVisible="False"
+                    WidthRequest="300"
+                    HeightRequest="380"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Margin="0,0,0,70"
+                    Background="#1E1E1E"
+                    StrokeShape="RoundRectangle 8"
+                    Stroke="Black">
+                <Grid RowDefinitions="*,Auto">
+                    <VerticalStackLayout Padding="16" Spacing="12" Grid.Row="0">
+
+                        <Label Text="Anteckningar"
+                           Style="{StaticResource PopUpHeadline}"
+                           HorizontalOptions="Center"/>
+                        <ScrollView>
+                            <Editor x:Name="NotesEditor"
+                                    TextChanged="NotesEditor_TextChanged"
+                                    Style="{StaticResource PopUpEditor}"
+                            HeightRequest="250"
+                            BackgroundColor="#2A2A2A"
+                            TextColor="White"/>
+                        </ScrollView>
+                    </VerticalStackLayout>
+
+                    <Button Text="Tillbaka"
+                            Grid.Row="1"
+                            Clicked="NotesBackClicked"/>
+
+                </Grid>
+            </Border>
+
+            <!-- ITEM DETAIL POPUP ovanpå -->
+            <Border x:Name="ItemDetailPopup"
+                    IsVisible="False"
+                    WidthRequest="300"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Background="#222"
+                    Padding="12">
+
+                <VerticalStackLayout Spacing="10">
+
+                    <Entry x:Name="ItemDetailName"
+                           Placeholder="Namn"
+                           TextColor="White"/>
+
+                    <Editor x:Name="ItemDetailDescription"
+                            Placeholder="Beskrivning"
+                            HeightRequest="100"
+                            BackgroundColor="#333"
+                            TextColor="White"/>
+
+                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                        <Button x:Name="CancelDetailButton"
+                                Text="Avbryt"
+                                Clicked="CloseItemDetailPopup"/>
+
+                        <Button x:Name="SaveDetailButton"
+                                Text="Spara"
+                                Clicked="SaveItemDetail"/>
+
+                        <Button x:Name="DeleteDetailButton"
+                                Text="Ta bort"
+                                BackgroundColor="Red"
+                                Clicked="DeleteItemFromDetailPopup"/>
+                    </HorizontalStackLayout>
+
+                </VerticalStackLayout>
+            </Border>
+        </Grid>
+    </Grid>
+</ContentPage>
+

@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Rubens_DnD__project"
+             x:Class="Rubens_DnD__project.MainPage"
+             BackgroundImageSource="menu_background2.png">
+
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:SelectedToColorConverter x:Key="SelectedToColorConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+        <!-- Bakgrundsbild -->
+        <Image Source="kp_main_page_background.png" Aspect="Fill"/>
+
+        <!-- Grid med 3 rader: ListView tar mest plats -->
+        <Grid RowDefinitions="4*,Auto" 
+              Padding="{OnIdiom Phone='0,220,0,0', Tablet='60,100,60,0', Desktop='60,120,60,0'}"
+              RowSpacing="0">
+
+            <!-- Fade-Gridden-->
+            <Grid Padding="0"
+                  WidthRequest="290"
+                  HeightRequest="390">
+
+
+                <!-- ListView över karaktärer -->
+                <CollectionView x:Name="CharacterListView"
+                SelectionMode="Single"
+                SelectionChanged="CharacterListView_SelectionChanged">
+
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border Stroke="#6B4F2D"
+                StrokeThickness="2"
+                Background="#4DCBB11A"
+                StrokeShape="RoundRectangle 22"
+                Padding="6"
+                Margin="5, 5, 5, 5">
+
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup Name="CommonStates">
+                                        <VisualState Name="Normal">
+                                            <VisualState.Setters>
+                                                <Setter Property="Background" Value="#77FFFFFF"/>
+                                                <Setter Property="Stroke" Value="#0E100B"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+
+                                        <VisualState Name="Selected" >
+                                            <VisualState.Setters>
+                                                <Setter Property="Background" Value="Beige"/>
+                                                <Setter Property="Stroke" Value="Red"/>
+
+
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+
+                                <VerticalStackLayout>
+                                    <Label Text="{Binding Name}"
+                       FontSize="36"
+                       FontFamily="CupAndTalon"
+                       TextColor="#0E100B"/>
+
+                                    <Label Text="{Binding RaceClassLevel}"
+                       FontSize="18"
+                       FontFamily="AvQest"
+                       TextColor="#0E100B"/>
+                                </VerticalStackLayout>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+
+                <!-- Fade top -->
+
+                <BoxView VerticalOptions="Start"
+             HeightRequest="40"
+             InputTransparent="True">
+                    <BoxView.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                            <GradientStop Color="{StaticResource FadeBlack}" Offset="0"/>
+                            <GradientStop Color="{StaticResource FadeBlackTransparent}" Offset="1"/>
+                        </LinearGradientBrush>
+                    </BoxView.Background>
+                </BoxView>
+
+
+                <!-- Fade bottom -->
+                <BoxView VerticalOptions="End"
+             HeightRequest="40"
+             InputTransparent="True">
+                    <BoxView.Background>
+                        <LinearGradientBrush StartPoint="0,1" EndPoint="0,0">
+                            <GradientStop Color="{StaticResource FadeBlack}" Offset="0"/>
+                            <GradientStop Color="{StaticResource FadeBlackTransparent}" Offset="1"/>
+                        </LinearGradientBrush>
+                    </BoxView.Background>
+                </BoxView>
+
+            </Grid>
+
+
+            <!-- Knappar längst ner -->
+            <VerticalStackLayout Grid.Row="1" HorizontalOptions="Center" Spacing="6"
+                                 Margin="{OnIdiom Phone='0,0,0,5', Tablet='0,2,0,10', Desktop='0,3,0,15'}">
+
+                <!-- ÄVENTYRA-knappen -->
+                <Button x:Name="PlayBtn" 
+                        Text="ÄVENTYRA" 
+                        Clicked="PlayBtnClicked" 
+                        IsEnabled="False"
+                        Style="{StaticResource MenuButtonStyle}"
+                        WidthRequest="300"
+                        HeightRequest="60"
+                        Padding="1"
+                        FontSize="30"/>
+
+
+                <!-- Ny profil-knappen -->
+                <Button x:Name="NewProfileBtn" 
+                        Text="Ny Profil" 
+                        Clicked="NewProfileBtnClicked"
+                        Style="{StaticResource MenuButtonStyle}"
+                        WidthRequest="120"
+                        FontSize="22"
+                        Margin="{OnIdiom Phone='0,5,0,0', Tablet='0,10,0,0', Desktop='0,15,0,0'}"
+                        />
+
+
+                <!-- Delete-knappen -->
+                <ImageButton x:Name="DeleteBtn"
+                             Source="skull.png"
+                             IsEnabled="False"
+                             BackgroundColor="Transparent"
+                             CornerRadius="20"
+                             WidthRequest="40"
+                             HeightRequest="40"
+                             HorizontalOptions="Center"
+                             VerticalOptions="End"
+                             Clicked="DeleteBtnClicked"/>
+            </VerticalStackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>
+
+
+
+
