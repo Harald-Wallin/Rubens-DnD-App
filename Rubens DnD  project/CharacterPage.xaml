@@ -6,7 +6,7 @@
              NavigationPage.HasNavigationBar="False"
              Shell.NavBarIsVisible="False">
     <Grid>
-        <Image Source="kp_character_page_background.png" Aspect="AspectFill" />
+        <Image x:Name="BackgroundImage" Aspect="AspectFill" />
         <Grid>
 
             <Grid.RowDefinitions>
@@ -51,7 +51,8 @@
 
                 </VerticalStackLayout>
 
-                <ImageButton Source="die.png" HeightRequest="60"
+                
+                <ImageButton Source="die.png" HeightRequest="50"
                                  Grid.Row="0"
                                  Grid.Column="2"
                                  Margin="0,60,0,0"/>
@@ -72,16 +73,17 @@
                 <!-- Steg 3 – Primära stats -->
                 <HorizontalStackLayout Grid.Row="2" Grid.ColumnSpan="3"
                                        HorizontalOptions="Center"
-                                       Spacing="20">
+                                       Spacing="20"
+                                       Padding="0,0,20,0">
                     <!-- Armor -->
                     <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="5">
                         <!-- Knapp för att minska Armor -->
-                        <VerticalStackLayout Spacing="5" VerticalOptions="Center" >
+                        <VerticalStackLayout Spacing="5" VerticalOptions="Center" Padding="2,0,0,0" >
                             <Button Text="+" Clicked="IncreaseArmorClicked" Style="{StaticResource CharacterPage+-}"/>
                             <Button Text="-" WidthRequest="30" Clicked="DecreaseArmorClicked" Style="{StaticResource CharacterPage+-}"/>
                         </VerticalStackLayout>
                         <!-- Armor-värde -->
-                        <Label x:Name="ArmorLabel" Text="0" FontSize="24" FontFamily="AvQest" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="50" HorizontalTextAlignment="Center"/>
+                        <Label x:Name="ArmorLabel" Text="0" FontSize="24" FontFamily="AvQest" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="37" HorizontalTextAlignment="Center"/>
                     </HorizontalStackLayout>
 
                     <!-- HP -->
@@ -108,7 +110,7 @@
                     <HorizontalStackLayout HorizontalOptions="Fill" VerticalOptions="Center" Spacing="5" >
 
                         <!-- Wizard Level Label -->
-                        <Label x:Name="WizardLabel" Text="0" FontSize="24" FontFamily="AvQest" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="50" HorizontalTextAlignment="Center"/>
+                        <Label x:Name="WizardLabel" Text="0" FontSize="24" FontFamily="AvQest" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="37" HorizontalTextAlignment="Center"/>
 
                         <!-- Knapp för att ändra Wizard Level -->
                         <VerticalStackLayout Spacing="5" VerticalOptions="Center">
@@ -163,26 +165,26 @@
                     <Button Text="+"  Clicked="IncreaseSpiritClicked" Style="{StaticResource CharacterPage+-}"/>
                 </HorizontalStackLayout>
                 <!-- Steg 5 – Inspiration & Avsluta -->
-                <VerticalStackLayout Spacing="15" Padding="0,95,70,0" HorizontalOptions="Center">
+                <VerticalStackLayout Spacing="15" Padding="0,55,70,0" HorizontalOptions="Center">
 
                     <!-- Inspiration pluppar -->
                     <VerticalStackLayout>
                         <Label Text="Inspiration" HorizontalTextAlignment="Center" FontFamily="AvQest" FontSize="30"/>
                         <HorizontalStackLayout Spacing="12" HorizontalOptions="Center" Margin="0,10,0,0">
-                            
-                            <BoxView x:Name="Inspiration1" WidthRequest="50" HeightRequest="40" Color="Grey" CornerRadius="20">
+
+                            <BoxView x:Name="Inspiration1" WidthRequest="50" HeightRequest="40" Color="Grey" CornerRadius="20" BackgroundColor="Transparent">
                                 <BoxView.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="InspirationTapped" CommandParameter="0"/>
                                 </BoxView.GestureRecognizers>
                             </BoxView>
 
-                            <BoxView x:Name="Inspiration2" WidthRequest="50" HeightRequest="40" Color="Grey" CornerRadius="20">
+                            <BoxView x:Name="Inspiration2" WidthRequest="50" HeightRequest="40" Color="Grey" CornerRadius="20" BackgroundColor="Transparent">
                                 <BoxView.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="InspirationTapped" CommandParameter="1"/>
                                 </BoxView.GestureRecognizers>
                             </BoxView>
 
-                            <BoxView x:Name="Inspiration3" WidthRequest="50" HeightRequest="40" Color="Grey" CornerRadius="20">
+                            <BoxView x:Name="Inspiration3" WidthRequest="50" HeightRequest="40" Color="Grey" CornerRadius="20" BackgroundColor="Transparent">
                                 <BoxView.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="InspirationTapped" CommandParameter="2"/>
                                 </BoxView.GestureRecognizers>
@@ -227,7 +229,7 @@
                 <Button Text="RETIRERA" Clicked="ExitClicked" BackgroundColor="#BA1400" TextColor="#0E100B" BorderColor="#0E100B"
                         BorderWidth="1" CornerRadius="4" FontFamily="AvQest"
                         FontSize="16" WidthRequest="120"
-                        Margin="0,20,20,60"
+                        Margin="0,60,10,60"
                         VerticalOptions="End"/>
 
             </VerticalStackLayout>
