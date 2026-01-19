@@ -87,8 +87,8 @@
             </Style>
 
             <Style x:Key="CharacterPage+-" TargetType="Button">
-                <Setter Property="MinimumHeightRequest" Value="30" />
-                <Setter Property="MinimumWidthRequest" Value="30" />
+                <Setter Property="MinimumHeightRequest" Value="40" />
+                <Setter Property="MinimumWidthRequest" Value="40" />
                 <Setter Property="HeightRequest" Value="10" />
                 <Setter Property="WidthRequest" Value="10" />
                 <Setter Property="BackgroundColor" Value="Transparent" />

@@ -55,9 +55,8 @@ public partial class CharacterPage : ContentPage
             InspirationBoxes[i].Color = character.InspirationStatus[i] ? Colors.Gold : Colors.Gray;
         }
 
-
-        
     }
+
 
     private void LoadFullCharacter()
     {
@@ -92,6 +91,45 @@ public partial class CharacterPage : ContentPage
         character.InspirationStatus = loadedCharacter.InspirationStatus ?? new bool[3];
 
     }
+
+    //----------------Random Bakgrundsbild--------------------
+    private static readonly Random _random = new();
+
+    private readonly string[] _backgroundImages =
+    {
+    "kp_character_page_background.png",
+    "kp_character_page_background2.png",
+    "kp_character_page_background3.png",
+    "kp_character_page_background4.png",
+    "kp_character_page_background5.png"
+};
+
+    private string _lastBackground;
+
+    private void SetRandomBackground()
+    {
+        if (BackgroundImage == null)
+            return;
+
+        string image;
+        do
+        {
+            image = _backgroundImages[_random.Next(_backgroundImages.Length)];
+        }
+        while (image == _lastBackground && _backgroundImages.Length > 1);
+
+        _lastBackground = image;
+        BackgroundImage.Source = image;
+    }
+
+    //----Random Bakgrundsbild---
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        SetRandomBackground();
+    }
+
+
 
 
     void ShowPopup(VisualElement popup)
