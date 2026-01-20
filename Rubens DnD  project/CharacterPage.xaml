@@ -29,7 +29,7 @@
 
 
 
-                <ImageButton Source="scroll.png" HeightRequest="60"
+               <ImageButton Source="scroll.png" HeightRequest="60"
                                  Grid.Row="0"
                                  Grid.Column="0"
                                  Margin="0,60,0,0"/>
@@ -51,11 +51,49 @@
 
                 </VerticalStackLayout>
 
+                <!--Dice picker + image Button-->
+                <VerticalStackLayout Grid.Row="0"
+                                       Grid.Column="2"
+                                     Margin="0,50,25,0">
+
+                    
+                    
+                    <Border Stroke="Black"
+                            StrokeThickness="2"
+                            HeightRequest="30"
+                            Background="Black"
+                            StrokeShape="RoundRectangle 4"
+                            Margin="0,0,0,10">
+                        
+                        <Picker x:Name="DicePicker"
+                            
+                            WidthRequest="30"
+                            HeightRequest="30"
+                            FontSize="18"
+                            Title="D"
+                            SelectedIndex="5"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center">
+                        <Picker.Items>
+                        <x:String>D2</x:String>
+                        <x:String>D4</x:String>
+                        <x:String>D6</x:String>
+                        <x:String>D8</x:String>
+                        <x:String>D10</x:String>
+                        <x:String>D12</x:String>
+                        <x:String>D20</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    </Border>
+
+                    <ImageButton Source="die.png" HeightRequest="50"
+                                 WidthRequest="50"
+                                 Margin="0,0,0,0"
+                                 Clicked="RollDiceClicked"/>
+
+
+                </VerticalStackLayout>
                 
-                <ImageButton Source="die.png" HeightRequest="50"
-                                 Grid.Row="0"
-                                 Grid.Column="2"
-                                 Margin="0,60,0,0"/>
 
 
                 <!-- Steg 2 – Level / DING -->
@@ -63,10 +101,34 @@
                                        Spacing="4"  HorizontalOptions="Center"
                                        Margin="0,0,0,30">
 
-                    <Button x:Name="DecreaseLevelBtn" Text="-"  Clicked="DecreaseLevelClicked" Style="{StaticResource CharacterPage+-}"/>
+                    <Button x:Name="DecreaseLevelBtn" Text="-"  Clicked="DecreaseLevelClicked" Style="{StaticResource CharacterPage+-}"
+                            Margin="110,0,0,0"/>
                     <Label x:Name="LevelLabelText" Text="Lv." FontSize="18" FontFamily="AvQest" VerticalOptions="Center"/>
                     <Label x:Name="LevelLabel" Text="1" FontSize="25" FontFamily="AvQest" VerticalOptions="Center"/>
-                    <ImageButton x:Name="LevelUpBtn" Source="lvl_up.png" WidthRequest="30" HeightRequest="50" Clicked="LevelUpClicked" Background="Transparent"/>
+                    <ImageButton x:Name="LevelUpBtn" Source="lvl_up.png" WidthRequest="30" HeightRequest="50" Clicked="LevelUpClicked" Background="Transparent"
+                                 Margin="0,0,50,0"/>
+
+                    
+                        <!--Dice Display-->
+
+                    <Border
+                        Stroke="#0E100B"
+                        StrokeShape="RoundRectangle 4"
+                        StrokeThickness="3"
+                        HeightRequest="30">
+                        
+                        <Label x:Name="DiceResultLabel"
+                           Text="-"
+                           FontSize="28"
+                           WidthRequest="40"
+                           HeightRequest="30"
+                           FontFamily="AvQest"
+                           BackgroundColor="#0E100B"
+                           HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                           TextColor="White"/>
+                    </Border>
+                    
 
                 </HorizontalStackLayout>
 
@@ -96,13 +158,13 @@
 
                         <!-- HP Label -->
                         <Label x:Name="HPLabel" HorizontalOptions="Center" VerticalOptions="Center"
-                               FontSize="20"
+                               FontSize="26"
                                WidthRequest="90" HorizontalTextAlignment="Center" Style="{StaticResource HPSpanStyle}"/>
 
                         <!-- Max HP knappar -->
                         <VerticalStackLayout Spacing="5" VerticalOptions="Center">
-                            <Button Text="+ Max"  Clicked="IncreaseMaxHPClicked" Style="{StaticResource CharacterPage+-}"/>
-                            <Button Text="- Max"  Clicked="DecreaseMaxHPClicked" Style="{StaticResource CharacterPage+-}"/>
+                            <Button Text="+"  Clicked="IncreaseMaxHPClicked" Style="{StaticResource CharacterPage+-}"/>
+                            <Button Text="-"  Clicked="DecreaseMaxHPClicked" Style="{StaticResource CharacterPage+-}"/>
                         </VerticalStackLayout>
                     </HorizontalStackLayout>
 
@@ -170,7 +232,7 @@
                     <!-- Inspiration pluppar -->
                     <VerticalStackLayout>
                         <Label Text="Inspiration" HorizontalTextAlignment="Center" FontFamily="AvQest" FontSize="30"/>
-                        <HorizontalStackLayout Spacing="12" HorizontalOptions="Center" Margin="0,10,0,0">
+                        <HorizontalStackLayout Spacing="12" HorizontalOptions="Center" Margin="0,0,0,0">
 
                             <BoxView x:Name="Inspiration1" WidthRequest="50" HeightRequest="40" Color="Grey" CornerRadius="20" BackgroundColor="Transparent">
                                 <BoxView.GestureRecognizers>
@@ -199,31 +261,37 @@
 
             <VerticalStackLayout Grid.Row="1"
                              Grid.Column="1"
-                             Spacing="30"
+                             Spacing="20"
                              HorizontalOptions="End"
                              VerticalOptions="Center"
                              Padding="0,70,0,0">
-
+                
+                <!--Ryggsäck knapp-->
                 <ImageButton x:Name="InventoryBtn"
                          Source="inventory_image.png"
-                         WidthRequest="80"
-                         HeightRequest="80"
+                         WidthRequest="70"
+                         HeightRequest="70"
                          Clicked="InventoryBtn_Clicked"
-                         Background="Transparent"/>
+                         Background="Transparent"
+                         Margin="40,25,0,0"/>
 
+                <!--Färdigheter knapp-->
                 <ImageButton x:Name="AbilitiesBtn"
                          Source="abilities_image.png"
-                         WidthRequest="80"
-                         HeightRequest="80"
+                         WidthRequest="70"
+                         HeightRequest="70"
                          Clicked="AbilitiesBtn_Clicked"
-                         Background="Transparent"/>
+                         Background="Transparent"
+                         Margin="40,0,0,0"/>
 
+                <!--Färdigheter knapp-->
                 <ImageButton x:Name="NotesBtn"
                          Source="notes_image.png"
-                         WidthRequest="80"
-                         HeightRequest="80"
+                         WidthRequest="70"
+                         HeightRequest="70"
                          Clicked="NotesBtn_Clicked"
-                         Background="Transparent"/>
+                         Background="Transparent"
+                         Margin="40,0,0,30"/>
 
                 <!-- Avsluta-knapp -->
                 <Button Text="RETIRERA" Clicked="ExitClicked" BackgroundColor="#BA1400" TextColor="#0E100B" BorderColor="#0E100B"
