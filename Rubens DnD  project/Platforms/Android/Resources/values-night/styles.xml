@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+
+	<!-- ================= SPLASH THEME ================= -->
+	<!-- Stabil lösning för alla Android-versioner -->
+	<style name="Maui.SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+		<!-- Bakgrund + centrerad logga -->
+		<item name="android:windowBackground">@drawable/maui_splash_layer</item>
+
+		<!-- Status och navigation bar -->
+		<item name="android:statusBarColor">#000000</item>
+		<item name="android:navigationBarColor">#000000</item>
+	</style>
+
+	<!-- ================= MAIN APP THEME ================= -->
+	<style name="Maui.MainTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+
+		<!-- Lås dark mode -->
+		<item name="android:forceDarkAllowed">false</item>
+
+		<!-- Bakgrund -->
+		<item name="android:windowBackground">#000000</item>
+		<item name="android:colorBackground">#000000</item>
+
+		<!-- Text -->
+		<item name="android:textColorPrimary">#FFFFFF</item>
+
+	</style>
+
+</resources>
+
+
+
+
+
+
+

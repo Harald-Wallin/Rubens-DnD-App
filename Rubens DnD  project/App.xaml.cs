@@ -6,8 +6,7 @@
         public App()
         {
             InitializeComponent();
-            UserAppTheme = AppTheme.Light;
-            //MainPage = new NavigationPage(new MainPage());
+            Current.UserAppTheme = AppTheme.Light;
         }
 
         protected override Window CreateWindow(IActivationState? activationState)
