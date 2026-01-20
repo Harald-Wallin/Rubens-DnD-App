@@ -434,6 +434,10 @@
                     Stroke="Black">
 
                 <Grid RowDefinitions="*,Auto">
+                    <Image Source="abilities_page_background.png"
+                           Aspect="AspectFill"
+                           Opacity="0.50"/>
+                    
 
                     <VerticalStackLayout Padding="16" Spacing="12">
 

@@ -27,6 +27,8 @@
                   HeightRequest="390">
 
 
+
+
                 <!-- ListView över karaktärer -->
                 <CollectionView x:Name="CharacterListView"
                 SelectionMode="Single"
@@ -34,7 +36,8 @@
 
 
                     <CollectionView.ItemTemplate>
-                        <DataTemplate>
+                        
+                            <DataTemplate>
                             <Border Stroke="#6B4F2D"
                 StrokeThickness="2"
                 Background="#4DCBB11A"
@@ -64,6 +67,7 @@
 
                                 <VerticalStackLayout>
                                     <Label Text="{Binding Name}"
+                                           Background="Transparent"
                        FontSize="36"
                        FontFamily="CupAndTalon"
                        TextColor="#0E100B"/>
@@ -75,6 +79,8 @@
                                 </VerticalStackLayout>
                             </Border>
                         </DataTemplate>
+                    
+
                     </CollectionView.ItemTemplate>
 
                 </CollectionView>
@@ -121,7 +127,16 @@
                         WidthRequest="300"
                         HeightRequest="60"
                         Padding="1"
-                        FontSize="30"/>
+                        FontSize="30">
+                    <Button.Shadow>
+                        <Shadow
+                        Brush="Black"
+                        Offset="2,3"
+                        Radius="6"
+                        Opacity="0.6" />
+                    </Button.Shadow>
+                </Button>
+
 
 
                 <!-- Ny profil-knappen -->
@@ -131,8 +146,17 @@
                         Style="{StaticResource MenuButtonStyle}"
                         WidthRequest="120"
                         FontSize="22"
-                        Margin="{OnIdiom Phone='0,5,0,0', Tablet='0,10,0,0', Desktop='0,15,0,0'}"
-                        />
+                        Margin="{OnIdiom Phone='0,5,0,0', Tablet='0,10,0,0', Desktop='0,15,0,0'}">
+                    <Button.Shadow>
+                        <Shadow
+                            Brush="Black"
+                            Offset="2,3"
+                            Radius="6"
+                            Opacity="0.6" />
+                    </Button.Shadow>
+
+                </Button>
+
 
 
                 <!-- Delete-knappen -->

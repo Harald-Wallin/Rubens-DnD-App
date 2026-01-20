@@ -146,7 +146,7 @@
                         <Label 
                       x:Name="StrengthLabel" 
                       Text="0" 
-                      WidthRequest="15" 
+                      WidthRequest="21" 
                       HorizontalTextAlignment="Center"
                       VerticalOptions="Center"
                       Style="{StaticResource AttributeValueStyle}"/>
@@ -178,7 +178,7 @@
 
                     <Label 
                      x:Name="DexterityLabel" 
-                     Text="0" WidthRequest="15" 
+                     Text="0" WidthRequest="21" 
                      HorizontalTextAlignment="Center"
                      VerticalOptions="Center"
                      Style="{StaticResource AttributeValueStyle}"/>
@@ -210,7 +210,7 @@
 
                         <Label 
                      x:Name="IntellectLabel" 
-                     Text="0" WidthRequest="15" 
+                     Text="0" WidthRequest="21" 
                      HorizontalTextAlignment="Center"
                      VerticalOptions="Center"
                      Style="{StaticResource AttributeValueStyle}"/>
@@ -242,7 +242,7 @@
 
                         <Label 
                      x:Name="CharismaLabel" 
-                     Text="0" WidthRequest="15" 
+                     Text="0" WidthRequest="21" 
                      HorizontalTextAlignment="Center"
                      VerticalOptions="Center"
                      Style="{StaticResource AttributeValueStyle}"/>
@@ -275,7 +275,7 @@
                         <Label 
                      x:Name="SpiritLabel" 
                      Text="0" 
-                     WidthRequest="15" 
+                     WidthRequest="21" 
                      HorizontalTextAlignment="Center"
                      VerticalOptions="Center"
                      Style="{StaticResource AttributeValueStyle}"/>

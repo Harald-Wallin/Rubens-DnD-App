@@ -59,6 +59,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<AndroidResource Include="Platforms\Android\Resources\drawable\maui_splash_layer.xml" />
+		<AndroidResource Include="Platforms\Android\Resources\drawable\maui_splash.png" />
+		<AndroidResource Include="Platforms\Android\Resources\values\styles.xml" />
+	</ItemGroup>
+
+
+	<ItemGroup>
 	  <MauiImage Include="Resources\AppIcon\appiconstorelogo.png" />
 	</ItemGroup>
 
@@ -78,5 +85,14 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Platforms\Android\Resources\NewFolder\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<MauiSplashScreen Include="Resources\Splash\splash.png" Color="#000000" BaseSize="512,512" />
+	</ItemGroup>
+
 
 </Project>

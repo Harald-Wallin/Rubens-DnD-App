@@ -3,6 +3,9 @@ using Android.Content.PM;
 using Android.OS;
 using AndroidX.AppCompat.App;
 using AndroidX.Core.View;
+using Android.Graphics;
+using Microsoft.Maui.Platform;
+
 
 namespace Rubens_DnD__project
 {
@@ -21,15 +24,17 @@ namespace Rubens_DnD__project
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            AppCompatDelegate.DefaultNightMode = AppCompatDelegate.ModeNightNo;
-
             base.OnCreate(savedInstanceState);
+            Window.SetStatusBarColor(Android.Graphics.Color.ParseColor("#000000"));
+            var window = this.Window; // MauiAppCompatActivity
+                                      
+            Window.SetNavigationBarColor(Android.Graphics.Color.ParseColor("#000000"));
 
-            if (Build.VERSION.SdkInt >= BuildVersionCodes.Q)
-            {
-                Window.DecorView.ForceDarkAllowed = false;
-            }
+
+            AppCompatDelegate.DefaultNightMode =
+                AppCompatDelegate.ModeNightNo;
         }
+
     }
 }
 
