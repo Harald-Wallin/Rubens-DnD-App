@@ -12,7 +12,6 @@ public partial class CharacterPage : ContentPage
     private bool isAbilityMode = false;
 
 
-
     // Inspirationstatus
     private BoxView[] InspirationBoxes;
 
@@ -185,6 +184,24 @@ public partial class CharacterPage : ContentPage
             LevelLabel.Text = character.Level.ToString();
         }
     }
+
+
+    //-----------------Tärning-------------------
+    private static readonly Random _diceRandom = new();
+    private void RollDiceClicked(object sender, EventArgs e)
+    {
+        if (DicePicker.SelectedItem == null)
+            return;
+
+        // Ex: "D12" → 12
+        var diceText = DicePicker.SelectedItem.ToString();
+        var diceMax = int.Parse(diceText.Replace("D", ""));
+
+        int roll = _diceRandom.Next(1, diceMax + 1);
+
+        DiceResultLabel.Text = roll.ToString();
+    }
+
 
     // ---------------- Armor ----------------
     private void IncreaseArmorClicked(object sender, EventArgs e)
