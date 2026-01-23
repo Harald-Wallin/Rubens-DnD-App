@@ -48,7 +48,7 @@ public partial class NewProfilePage : ContentPage
         if (current > baseValue)
             label.TextColor = Colors.LimeGreen;
         else
-            label.TextColor = Colors.White; // eller Colors.Black beroende på tema
+            label.TextColor = Colors.Black; // eller Colors.Black beroende på tema
     }
 
     private void UpdateUI()

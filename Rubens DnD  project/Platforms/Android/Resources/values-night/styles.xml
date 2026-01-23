@@ -4,8 +4,6 @@
 	<!-- ================= SPLASH THEME ================= -->
 	<!-- Stabil lösning för alla Android-versioner -->
 	<style name="Maui.SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
-		<!-- Bakgrund + centrerad logga -->
-		<item name="android:windowBackground">@drawable/maui_splash_layer</item>
 
 		<!-- Status och navigation bar -->
 		<item name="android:statusBarColor">#000000</item>
@@ -28,6 +26,23 @@
 	</style>
 
 </resources>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

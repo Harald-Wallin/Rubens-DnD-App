@@ -382,7 +382,8 @@
 
                         <Label Text="Ryggsäck"
                                Style="{StaticResource PopUpHeadline}"
-                               HorizontalOptions="Center"/>
+                               HorizontalOptions="Center"
+                               TextColor="White"/>
 
                         <ScrollView>
                             <CollectionView x:Name="InventoryListView"
@@ -391,11 +392,11 @@
                                         HeightRequest="240">
                                 <CollectionView.ItemTemplate>
                                     <DataTemplate>
-                                        <Grid Padding="6">
+                                        <Grid Padding="3">
                                             <Border StrokeShape="RoundRectangle 6"
-                                                    Stroke="White">
+                                                    Stroke="Transparent">
                                                 <Label Text="{Binding Name}"
-                                               Style="{StaticResource PopUpListText}">
+                                                       Style="{StaticResource PopUpListText}">
                                                 <Label.GestureRecognizers>
                                                     <TapGestureRecognizer
                                                     Tapped="InventoryItemTapped"
@@ -410,16 +411,23 @@
                         </ScrollView>
 
                         <HorizontalStackLayout Grid.Row="1">
-                            <Button Text="Backa"
-                            WidthRequest="60"
-                            
+                            <Button Text="☜"
+                            WidthRequest="40"
+                            FontSize="29"
+                            CornerRadius="4"
                             Clicked="InventoryBackClicked"
-                            Margin="5,0,60,0"
+                            Margin="5,0,100,0"
                             Style="{StaticResource PopUpButton}"/>
 
-                            <Button Text="Lägg till"
+                            <Button Text="＋"
                             Clicked="AddItemClicked"
-                            Style="{StaticResource PopUpButton}"/>
+                            Style="{StaticResource PopUpButton}"
+                            CornerRadius="4"
+                            FontSize="30"
+                            Padding="0,3,0,0"
+                            WidthRequest="60"
+                            HeightRequest="40"
+                            />
                         </HorizontalStackLayout>
                     </VerticalStackLayout>
                 </Grid>
@@ -452,8 +460,10 @@
 
                                 <CollectionView.ItemTemplate>
                                     <DataTemplate>
-                                        <Grid Padding="6">
-                                            <Label Text="{Binding Name}"
+                                        <Grid Padding="3">
+                                            <Border StrokeShape="RoundRectangle 6"
+                                                    Stroke="Transparent">
+                                                <Label Text="{Binding Name}"
                                                Style="{StaticResource PopUpListText}">
                                                 <Label.GestureRecognizers>
                                                     <TapGestureRecognizer
@@ -461,6 +471,7 @@
                                                     CommandParameter="{Binding .}" />
                                                 </Label.GestureRecognizers>
                                             </Label>
+                                            </Border>
                                         </Grid>
                                     </DataTemplate>
 
@@ -472,14 +483,22 @@
                     </VerticalStackLayout>
 
                     <HorizontalStackLayout Grid.Row="1">
-                        <Button Text="Backa"
+                        <Button Text="☜"
+                                WidthRequest="40"
+                                FontSize="29"
+                                CornerRadius="4"
                                 Clicked="AbilitiesBackClicked"
-                                Margin="5,0,60,0"
-                                Style="{StaticResource PopUpButton}"/>
+                                Margin="5,0,100,0"
+                                Style="{StaticResource PopUpButton}"/>              
 
-                        <Button Text="Lägg till"
+                        <Button Text="＋"
                                 Clicked="AddAbilityClicked"
-                                Style="{StaticResource PopUpButton}"/>
+                                Style="{StaticResource PopUpButton}"
+                                CornerRadius="4"
+                                FontSize="30"
+                                Padding="0,3,0,0"
+                                WidthRequest="60"
+                                HeightRequest="40"/>
                     </HorizontalStackLayout>
                 </Grid>
             </Border>
@@ -525,34 +544,64 @@
                     WidthRequest="300"
                     HorizontalOptions="Center"
                     VerticalOptions="Center"
-                    Background="#222"
-                    Padding="12">
+                    Background="#380F00"
+                    Padding="20"
+                    Stroke="#D89651"
+                    StrokeShape="RoundRectangle 10"
+                    StrokeThickness="3">
 
                 <VerticalStackLayout Spacing="10">
 
                     <Entry x:Name="ItemDetailName"
                            Placeholder="Namn"
-                           TextColor="White"/>
+                           TextColor="White"
+                           FontFamily="AvQest"
+                           FontSize="24"/>
 
-                    <Editor x:Name="ItemDetailDescription"
+                    
+                        <Editor x:Name="ItemDetailDescription"
                             Placeholder="Beskrivning"
                             HeightRequest="100"
-                            BackgroundColor="#333"
-                            TextColor="White"/>
+                            BackgroundColor="Black"
+                            TextColor="White"
+                            FontFamily="AvQest"
+                            FontSize="18"/>
+                    
 
                     <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
                         <Button x:Name="CancelDetailButton"
-                                Text="Avbryt"
-                                Clicked="CloseItemDetailPopup"/>
+                                Text="☜"
+                                BorderWidth="1"
+                                FontFamily="AvQest"
+                                TextColor="#D89651"
+                                BorderColor="#D89651"
+                                BackgroundColor="#380F00"
+                                WidthRequest="40"
+                                HeightRequest="35"
+                                FontSize="29"
+                                CornerRadius="4"
+                                Clicked="CloseItemDetailPopup"
+                                Style="{StaticResource PopUpButton}"/>
 
                         <Button x:Name="SaveDetailButton"
                                 Text="Spara"
+                                BorderWidth="1"
+                                FontFamily="AvQest"
+                                TextColor="#D89651"
+                                BorderColor="#D89651"
+                                BackgroundColor="#380F00"
                                 Clicked="SaveItemDetail"/>
 
                         <Button x:Name="DeleteDetailButton"
-                                Text="Ta bort"
-                                BackgroundColor="Red"
-                                Clicked="DeleteItemFromDetailPopup"/>
+                                Text="✖"
+                                BorderWidth="1"
+                                FontFamily="AvQest"
+                                TextColor="#D89651"
+                                BorderColor="#D89651"
+                                BackgroundColor="#380F00"
+                                Clicked="DeleteItemFromDetailPopup"
+                                Style="{StaticResource PopUpButton}"
+                                CornerRadius="4"/>
                     </HorizontalStackLayout>
 
                 </VerticalStackLayout>

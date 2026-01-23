@@ -26,7 +26,7 @@
                 <Setter Property="BorderColor" Value="#0E100B" />
                 <Setter Property="BorderWidth" Value="1" />
                 <Setter Property="CornerRadius" Value="3" />
-                <Setter Property="FontFamily" Value="AvQest"/>
+                <Setter Property="FontFamily" Value="MoriaCitadel"/>
                 <Setter Property="FontAttributes" Value="Bold"/>
                 <Setter Property="Padding" Value="1"/>
 
@@ -36,19 +36,6 @@
                         <Setter Property="TextColor" Value="#CCCCCC"/>
                     </Trigger>
                 </Style.Triggers>
-            </Style>
-
-            <Style x:Key="ProfileButtonStyle" TargetType="Button">
-                <Setter Property="TextColor" Value="#0E100B" />
-                <Setter Property="BackgroundColor" Value="#99CBB88A" />
-                <Setter Property="BorderColor" Value="#0E100B" />
-                <Setter Property="BorderWidth" Value="1" />
-                <Setter Property="CornerRadius" Value="20" />
-                <Setter Property="FontFamily" Value="MoriaCitadel"/>
-                <Setter Property="FontSize" Value="28"/>
-                <Setter Property="HeightRequest" Value="30"/>
-                <Setter Property="WidthRequest" Value="30"/>
-                <Setter Property="Padding" Value="0"/>
             </Style>
 
             <!-- HP label(SPAN) i CharacterPage-->
@@ -67,7 +54,28 @@
                 <Setter Property="HeightRequest" Value="45"/>
                 <Setter Property="HorizontalTextAlignment" Value="Center"/>
                 <Setter Property="VerticalTextAlignment" Value="Center"/>
-                
+            </Style>
+
+
+            <!--NewProfilePage-->
+            <Style x:Key="NameRaceClassEntry" TargetType="Entry">
+                <Setter Property="TextColor" Value="#0E100B" />
+                <Setter Property="FontFamily" Value="AvQest"/>
+                <Setter Property="FontSize" Value="25"/>
+                <Setter Property="BackgroundColor" Value="Transparent" />
+            </Style>
+
+            <Style x:Key="ProfileButtonStyle" TargetType="Button">
+                <Setter Property="TextColor" Value="#0E100B" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="BorderColor" Value="#0E100B" />
+                <Setter Property="BorderWidth" Value="1" />
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="FontFamily" Value="MoriaCitadel"/>
+                <Setter Property="FontSize" Value="28"/>
+                <Setter Property="HeightRequest" Value="30"/>
+                <Setter Property="WidthRequest" Value="30"/>
+                <Setter Property="Padding" Value="0"/>
             </Style>
 
             <Style x:Key="AttributeValueStyle" TargetType="Label">
@@ -78,28 +86,7 @@
                 <Setter Property="Margin" Value="0,0,10,0"/>
             </Style>
 
-            <!--NewProfilePage-->
-            <Style x:Key="NameRaceClassEntry" TargetType="Entry">
-                <Setter Property="TextColor" Value="#0E100B" />
-                <Setter Property="FontFamily" Value="AvQest"/>
-                <Setter Property="FontSize" Value="25"/>
-                <Setter Property="BackgroundColor" Value="Transparent" />
-            </Style>
 
-            <Style x:Key="CharacterPage+-" TargetType="Button">
-                <Setter Property="MinimumHeightRequest" Value="40" />
-                <Setter Property="MinimumWidthRequest" Value="40" />
-                <Setter Property="HeightRequest" Value="10" />
-                <Setter Property="WidthRequest" Value="10" />
-                <Setter Property="BackgroundColor" Value="Transparent" />
-                <Setter Property="BorderWidth" Value="2" />
-                <Setter Property="BorderColor" Value="#0E100B" />
-                <Setter Property="FontSize" Value="15" />
-                <Setter Property="FontAttributes" Value="Bold"/>
-                <Setter Property="Padding" Value="0"/>
-            </Style>
-            
-            
             <!--Inventory & Abilities-->
 
             <Style x:Key="InventoryAbilityList" TargetType="CollectionView">
@@ -130,6 +117,19 @@
                 <Setter Property="TextColor" Value="White"/>
             </Style>
 
+            <Style x:Key="CharacterPage+-" TargetType="Button">
+                <Setter Property="MinimumHeightRequest" Value="40" />
+                <Setter Property="MinimumWidthRequest" Value="40" />
+                <Setter Property="HeightRequest" Value="10" />
+                <Setter Property="WidthRequest" Value="10" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="BorderWidth" Value="2" />
+                <Setter Property="BorderColor" Value="#0E100B" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="Padding" Value="0"/>
+            </Style>
+
             <Style x:Key="CharacterAttributeValueLabel" TargetType="Label">
                 <Setter Property="VerticalTextAlignment" Value="Center"/>
                 <Setter Property="WidthRequest" Value="26"/>
@@ -140,6 +140,8 @@
                 <Setter Property="TextColor" Value="#0E100B"/>
             </Style>
 
+            
+            <!-- Pop ups -->
             <Style x:Key="PopUpBorder" TargetType="Border">
                 <Setter Property="HeightRequest" Value="366"/>
                 <Setter Property="WidthRequest" Value="250"/>
@@ -164,11 +166,11 @@
 
             <Style x:Key="PopUpButton" TargetType="Button">
                 <Setter Property="FontFamily" Value="AvQest"/>
-                <Setter Property="BackgroundColor" Value="#BA1400"/>
+                <Setter Property="BackgroundColor" Value="#380F00"/>
                 <Setter Property="CornerRadius" Value="0"/>
                 <Setter Property="BorderWidth" Value="1"/>
-                <Setter Property="BorderColor" Value="#0E100B"/>
-                <Setter Property="TextColor" Value="#0E100B"/>
+                <Setter Property="BorderColor" Value="#D89651"/>
+                <Setter Property="TextColor" Value="#D89651"/>
                 <Setter Property="FontSize" Value="20"/>
                 <Setter Property="MinimumHeightRequest" Value="5"/>
                 <Setter Property="Margin" Value="5"/>
@@ -179,15 +181,13 @@
             <!-- Text i pop-up listorna-->
             <Style x:Key="PopUpListText" TargetType="Label">
                 <Setter Property="FontFamily" Value="AvQest"/>
-                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="FontSize" Value="20"/>
                 <Setter Property="FontAttributes" Value="Bold"/>
-                <Setter Property="TextColor" Value="#0E100B"/>
-                <Setter Property="BackgroundColor" Value="#0E100B"/>
-                <Setter Property="HeightRequest" Value="30"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="BackgroundColor" Value="#CC221818"/>
+                <Setter Property="HeightRequest" Value="40"/>
                 <Setter Property="VerticalTextAlignment" Value="Center"/>
-                
-
-
+                <Setter Property="Padding" Value="12,0,2,0"/>
             </Style>
 
             <!-- Converter för ListView Highlight -->
