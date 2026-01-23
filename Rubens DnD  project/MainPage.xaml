@@ -31,59 +31,41 @@
 
                 <!-- ListView över karaktärer -->
                 <CollectionView x:Name="CharacterListView"
-                SelectionMode="Single"
-                SelectionChanged="CharacterListView_SelectionChanged">
-
-
+                SelectionMode="None">
+                <!--SelectionChanged="CharacterListView_SelectionChanged" -->
+                 
                     <CollectionView.ItemTemplate>
-                        
-                            <DataTemplate>
+                        <DataTemplate>
                             <Border Stroke="#6B4F2D"
-                StrokeThickness="2"
-                Background="#4DCBB11A"
-                StrokeShape="RoundRectangle 22"
-                Padding="6"
-                Margin="5, 5, 5, 5">
+                    StrokeThickness="2"
+                    StrokeShape="RoundRectangle 22"
+                    Padding="6"
+                    Margin="5,5,5,5"
+                    Background="{Binding IsSelected, Converter={StaticResource SelectedToColorConverter}}">
 
-                                <VisualStateManager.VisualStateGroups>
-                                    <VisualStateGroup Name="CommonStates">
-                                        <VisualState Name="Normal">
-                                            <VisualState.Setters>
-                                                <Setter Property="Background" Value="#77FFFFFF"/>
-                                                <Setter Property="Stroke" Value="#0E100B"/>
-                                            </VisualState.Setters>
-                                        </VisualState>
-
-                                        <VisualState Name="Selected" >
-                                            <VisualState.Setters>
-                                                <Setter Property="Background" Value="Beige"/>
-                                                <Setter Property="Stroke" Value="Red"/>
-
-
-                                            </VisualState.Setters>
-                                        </VisualState>
-                                    </VisualStateGroup>
-                                </VisualStateManager.VisualStateGroups>
+                                <!-- Tap på profilen -->
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="CharacterTapped"/>
+                                </Border.GestureRecognizers>
 
                                 <VerticalStackLayout>
                                     <Label Text="{Binding Name}"
-                                           Background="Transparent"
-                       FontSize="36"
-                       FontFamily="CupAndTalon"
-                       TextColor="#0E100B"/>
+                           
+                           FontSize="36"
+                           FontFamily="CupAndTalon"
+                           TextColor="#0E100B"/>
 
                                     <Label Text="{Binding RaceClassLevel}"
-                       FontSize="18"
-                       FontFamily="AvQest"
-                       TextColor="#0E100B"/>
+                           FontSize="18"
+                           FontFamily="AvQest"
+                           TextColor="#0E100B"/>
                                 </VerticalStackLayout>
                             </Border>
                         </DataTemplate>
-                    
-
                     </CollectionView.ItemTemplate>
 
                 </CollectionView>
+
 
                 <!-- Fade top -->
 
@@ -120,10 +102,14 @@
 
                 <!-- ÄVENTYRA-knappen -->
                 <Button x:Name="PlayBtn" 
-                        Text="ÄVENTYRA" 
+                        Text="◄ ÄVENTYRA ►" 
                         Clicked="PlayBtnClicked" 
                         IsEnabled="False"
-                        Style="{StaticResource MenuButtonStyle}"
+                        BorderWidth="1"
+                        BorderColor="#D89651"
+                        BackgroundColor="#380F00"
+                        TextColor="#D89651"
+                        FontFamily="AvQest"
                         WidthRequest="300"
                         HeightRequest="60"
                         Padding="1"
@@ -135,6 +121,24 @@
                         Radius="6"
                         Opacity="0.6" />
                     </Button.Shadow>
+
+                    <!--<VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup Name="PlayBtnStates">
+                            <VisualState Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="#380F00"/>
+                                    <Setter Property="TextColor" Value="#D89651"/>
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="#220A00"/>
+                                    <Setter Property="TextColor" Value="#8B5E3C"/>
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>-->
+
                 </Button>
 
 
@@ -143,9 +147,13 @@
                 <Button x:Name="NewProfileBtn" 
                         Text="Ny Profil" 
                         Clicked="NewProfileBtnClicked"
-                        Style="{StaticResource MenuButtonStyle}"
+                        BorderWidth="1"
+                        BorderColor="#D89651"
+                        BackgroundColor="#380F00"
+                        TextColor="#D89651"
+                        FontFamily="AvQest"
                         WidthRequest="120"
-                        FontSize="22"
+                        FontSize="16"
                         Margin="{OnIdiom Phone='0,5,0,0', Tablet='0,10,0,0', Desktop='0,15,0,0'}">
                     <Button.Shadow>
                         <Shadow
